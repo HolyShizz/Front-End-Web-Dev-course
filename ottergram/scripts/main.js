@@ -26,13 +26,6 @@ function setDetailsFromThumb(thumbnail) {
     setDetails(imageFromThumb(thumbnail), titleFromThumb(thumbnail));
 }
 
-var firstThumbnail = document.querySelector(THUMBNAIL_LINK_SELECTOR);
-
-
-
-firstThumbnail.addEventListener('click', function () {
-    console.log('you clicked!');
-});
 
 function addThumbClickHandler(thumb) {
     'use strict';
