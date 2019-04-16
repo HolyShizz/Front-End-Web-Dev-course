@@ -26,6 +26,7 @@ html,body {
 
 body {
     display: flex;
+    min-height: 100vh;
     flex-direction: column;
 
     font-size: 10px;
@@ -50,9 +51,8 @@ a {
 }
 
 .main-content {
-    flex: 1 1 auto;
+    flex: 1;
     display: flex;
-    flex-direction: column;
 }
 
 .thumbnail-item {
@@ -63,10 +63,12 @@ a {
     border: 1px solid rgba(100%, 100%, 100%, 0.9);
 }
 
-.thumbnail-list-2 {
-    flex: 0 1 auto;
-    order: 2;
+
+.thumbnail-list-left {
+    flex: 0 0 130px;
+    order: -1;
     display: flex;
+    flex-direction: column;
     justify-content: space-between;
     list-style: none;
     padding: 0;
@@ -75,10 +77,11 @@ a {
     overflow-x: auto;
 }
 
-.thumbnail-list {
-    flex: 0 1 auto;
+.thumbnail-list-right {
+    flex: 0 0 130px;
    
     display: flex;
+    flex-direction: column;
     justify-content: space-between;
     list-style: none;
     padding: 0;
@@ -103,7 +106,7 @@ a {
 }
 
 .detail-image-container {
-    flex: 1 1 auto;
+    flex: 1;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -134,21 +137,22 @@ a {
 
 @media all and (orientation:portrait) {
     .main-content {
-        flex-direction: row;
-        overflow: hidden;
+        flex-direction: column;
+        overflow: auto;
     }
 
-    .thumbnail-list {
-        flex-direction: column;
-        order: 0;
+    .thumbnail-list-left, .thumbnail-list-right {
+        flex-direction: row;
         margin-left: 20px;
+        overflow: auto; 
+        flex: 0 0 auto;
     }
 
     .thumbnail-item {
         max-width: 260px;
     }
 
-    .thumbnail-item + .thumbnail-item {
-        margin-top: 20px;
+    .detail-image-container {
+        padding: 0 0 20px 0;
     }
 }
