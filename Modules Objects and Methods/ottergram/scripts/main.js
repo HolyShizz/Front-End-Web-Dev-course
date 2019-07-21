@@ -79,14 +79,18 @@ function addKeyPressHandler() {
     })
 };
 
-function initializeEvents() {
+/*
+(function initializeEvents() {
     'use strict';
     var thumbnails = getThumbnailsArray();
     thumbnails.forEach(addThumbClickHandler);
     addKeyPressHandler();
-}
-
-initializeEvents();
+}) ();
+*/
+(function (thumbnails) {
+    'use strict';
+    thumbnails.forEach(addThumbClickHandler);
+}) (getThumbnailsArray());
 
 
 /* Chapter 1.6 Gold Challenge
@@ -151,14 +155,14 @@ function addResetClickHandler(thumb) {
 };
 
 //Initializing handlers on mix and reset buttons
-function initializeButtons() {
+(function initializeButtons() {
     'use strict';
     createThumbSrcArray(THUMBNAIL_LINK_SELECTOR_Array);
     var thumbnailsReset = document.querySelector('[data-button-reset]');
     addResetClickHandler(thumbnailsReset);
     var thumbnailsRandom = document.querySelector('[data-button-random]');
     addMixClickHandler(thumbnailsRandom);
-}
+}) ();
 
-initializeButtons();
+
 
