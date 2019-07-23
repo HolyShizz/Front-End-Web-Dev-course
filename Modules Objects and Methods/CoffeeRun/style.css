@@ -9,3 +9,7 @@
 .mocha {
     background-color: #a38068;
 }
+
+form :invalid:required:focus {
+    border-color: #a94442;
+}

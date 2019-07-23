@@ -32,16 +32,16 @@
     }
 
     CheckList.prototype.reverseRow = function (data) {
-        document.getElementById("emailInput").value = data["emailAdress"];
+        document.getElementById("emailInput").value = data["emailAddress"];
         document.getElementById("coffeeOrder").value = data["coffee"];
         document.querySelector('input[value='+ data["size"] +']').checked = true;
         document.getElementById("flavorShot").value = data["flavor"];
         document.getElementById("strengthLevel").value = data["strengthLevel"];
-        document.getElementById("emailId").value = data["emailAdress"];
+        document.getElementById("emailId").value = data["emailAddress"];
     }
 
     CheckList.prototype.addRow = function (coffeeOrder) {
-        this.removeRow(coffeeOrder.emailAdress);
+        this.removeRow(coffeeOrder.emailAddress);
         this.removeRow(coffeeOrder.emailId);
         var rowElement = new Row(coffeeOrder);
         this.$element.append(rowElement.$element);
@@ -64,7 +64,7 @@
 
         var $checkbox = $('<input></input>', {
             type: 'checkbox',
-            value: coffeeOrder.emailAdress
+            value: coffeeOrder.emailAddress
         });
 
         var description = ' [' + coffeeOrder.strength + 'x]';
@@ -73,11 +73,11 @@
         }
         description += coffeeOrder.size + ' ';
         description += coffeeOrder.coffee + ', ';
-        description += ' (' + coffeeOrder.emailAdress + ') ';
+        description += ' (' + coffeeOrder.emailAddress + ') ';
         var $button = $('<button></button>',  {
             'class': 'btn btn-default',
             type: 'button',
-            value: coffeeOrder.emailAdress
+            value: coffeeOrder.emailAddress
         })
 
         $label.append($checkbox);

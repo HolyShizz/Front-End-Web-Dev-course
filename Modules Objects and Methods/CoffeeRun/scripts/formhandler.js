@@ -26,10 +26,46 @@
                 this.reset();
             });
         };
+
+        FormHandler.prototype.addInputHandler = function (fn) {
+            console.log('Setting input handler for form');
+            this.$formElement.on('input', '[name="emailAddress"]', function (event) {
+                var emailAddress = event.target.value;
+                var message = '';
+                if (fn(emailAddress)) {
+                    event.target.setCustomValidity('');
+                } else {
+                    message = emailAddress + ' is not an authorized email address!';
+                    event.target.setCustomValidity(message);
+                }
+            });
+        }
+        FormHandler.prototype.addInputHandlerDecaf = function (fn) {
+            console.log('Setting decaf validation');
+            this.$formElement.on('input', '[name="coffee"]', function (event) {
+                var coffeeOrder = event.target.value;
+                var strengthLevel = document.getElementById("strengthLevel").value;
+                var message = '';
+                if (fn(coffeeOrder, strengthLevel)) {
+                    event.target.setCustomValidity('');
+                } else {
+                    message = coffeeOrder + ' contains too much caffeine';
+                    event.target.setCustomValidity(message);
+                }
+            })
+            this.$formElement.on('input', '[name="strength"]', function (event) {
+                var strengthLevel = event.target.value;
+                var coffeeOrder = document.getElementById("coffeeOrder").value;
+                var message = '';
+                if (fn(coffeeOrder, strengthLevel)) {
+                    event.target.setCustomValidity('');
+                } else {
+                    message = strengthLevel + ' is too much caffeine for ' + coffeeOrder;
+                    event.target.setCustomValidity(message);
+                }
+            })
+        }
     }
-
-
-
     App.FormHandler = FormHandler;
     window.App = App;
 })(window);
