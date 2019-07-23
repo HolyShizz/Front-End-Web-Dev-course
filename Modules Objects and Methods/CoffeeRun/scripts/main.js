@@ -16,6 +16,7 @@
     checkList.addButtClickHandler(function (email) {
         var data = {};
         data = myTruck.db.get(email);
+        console.log(data);
         checkList.reverseRow.call(checkList, data);
         myTruck.db.remove(email);
     });

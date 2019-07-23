@@ -41,28 +41,27 @@
             });
         }
         FormHandler.prototype.addInputHandlerDecaf = function (fn) {
+            var coffeeOrder = document.getElementById("coffeeOrder").value;
+            var strengthLevel = document.getElementById("strengthLevel").value;
+            var message = '';
             console.log('Setting decaf validation');
             this.$formElement.on('input', '[name="coffee"]', function (event) {
-                var coffeeOrder = event.target.value;
-                var strengthLevel = document.getElementById("strengthLevel").value;
-                var message = '';
+                coffeeOrder = event.target.value;
                 if (fn(coffeeOrder, strengthLevel)) {
                     event.target.setCustomValidity('');
                 } else {
                     message = coffeeOrder + ' contains too much caffeine';
                     event.target.setCustomValidity(message);
                 }
-            })
-            this.$formElement.on('input', '[name="strength"]', function (event) {
-                var strengthLevel = event.target.value;
-                var coffeeOrder = document.getElementById("coffeeOrder").value;
-                var message = '';
+            });
+            this.$formElement.on('change', '[name="strength"]', function (event) {
+                strengthLevel = event.target.value;
                 if (fn(coffeeOrder, strengthLevel)) {
                     event.target.setCustomValidity('');
                 } else {
                     message = strengthLevel + ' is too much caffeine for ' + coffeeOrder;
                     event.target.setCustomValidity(message);
-                }
+                };
             })
         }
     }

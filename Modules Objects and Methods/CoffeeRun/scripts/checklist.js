@@ -36,7 +36,8 @@
         document.getElementById("coffeeOrder").value = data["coffee"];
         document.querySelector('input[value='+ data["size"] +']').checked = true;
         document.getElementById("flavorShot").value = data["flavor"];
-        document.getElementById("strengthLevel").value = data["strengthLevel"];
+        document.getElementById("strengthLevel").value = data["strength"];
+        console.log(data["strength"]);
         document.getElementById("emailId").value = data["emailAddress"];
     }
 
